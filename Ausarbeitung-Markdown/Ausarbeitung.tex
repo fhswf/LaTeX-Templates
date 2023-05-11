@@ -1,0 +1,52 @@
+\documentclass[a4paper, numbers=withenddot, 11pt]{scrartcl}
+
+% Vorlage fuer Ausarbeitungen
+% Version 2023-05-11
+% Getestet mit TeX Live; Kodierung: UTF8
+
+% Hier Daten eintragen:
+\newcommand{\name}{Max Mustermann}
+\newcommand{\modulname}{Name des Moduls}
+\newcommand{\thema}{Titel der Ausarbeitung}
+\newcommand{\hochschule}{Fachhochschule Südwestfalen}
+\newcommand{\datum}{\today}
+% Ende der Daten
+
+\usepackage[inner=25mm, outer=25mm, top=25mm, bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[style=alphabetic, backend=biber, bibencoding=utf8]{biblatex}
+\addbibresource{literatur.bib}\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{scrhack}
+\usepackage{setspace}\setstretch{1.1}
+\parindent0pt\parskip6pt
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+\renewcommand{\lstlistlistingname}{Listingverzeichnis}
+\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left}
+
+\title{\thema}
+\author{\name\\ \hochschule \\[5mm] Schriftliche Ausarbeitung im Modul\\ „\modulname“}
+
+% Konfiguration fuer Markdown:
+\usepackage[
+    fencedCode,
+    pipeTables,
+    tableCaptions,
+    citations,
+    % hybrid % LaTeX innerhalb von Markdown erlauben
+    ]{markdown}
+\usepackage{float}\floatplacement{figure}{!hb}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\markdownInput{mainmatter.md}
+\printbibliography
+\end{document}

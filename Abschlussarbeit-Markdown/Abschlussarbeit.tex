@@ -1,0 +1,60 @@
+\documentclass[a4paper, 11pt, toc=listof, toc=bib]{scrbook}
+
+% Vorlage fuer Abschlussarbeiten
+% Version 2023-05-11
+% Getestet mit TeX Live; Kodierung: UTF8
+
+% Hier Daten eintragen:
+\newcommand{\name}{Max Mustermann}
+\newcommand{\abschlussarbeit}{Bachelorarbeit}
+\newcommand{\hochschule}{Fachhochschule Südwestfalen}
+\newcommand{\datum}{\today}
+\newcommand{\titeldeutsch}{Deutscher Titel\\ der Abschlussarbeit}
+\newcommand{\titelenglisch}{Englischer Titel der Abschlussarbeit}
+\newcommand{\erstpruefer}{Prof. Dr. ???}
+\newcommand{\zweitpruefer}{Prof. Dr. ???}
+% Ende der Daten
+
+\usepackage[inner=25mm, outer=25mm, top=25mm, bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[style=alphabetic, backend=biber, bibencoding=utf8]{biblatex}
+\addbibresource{literatur.bib}\usepackage{csquotes}
+\usepackage{scrlayer-scrpage}\lohead{\rightmark}\rehead{\leftmark}\ohead{\pagemark}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{scrhack}
+\parindent0pt\parskip6pt
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+\renewcommand{\lstlistlistingname}{Listingverzeichnis}
+\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left}
+
+% Konfiguration fuer Markdown:
+\usepackage[
+    fencedCode,
+    pipeTables,
+    tableCaptions,
+    citations,
+    % hybrid % LaTeX innerhalb von Markdown erlauben
+    ]{markdown}
+\usepackage{float}\floatplacement{figure}{!hb}
+
+\begin{document}
+\frontmatter
+\input{frontmatter}
+\tableofcontents
+
+\mainmatter
+\ofoot*{}
+\markdownInput{mainmatter.md}
+
+\backmatter
+\printbibliography
+\listoffigures
+\listoftables
+\end{document}
