@@ -1,7 +1,7 @@
 \documentclass[a4paper, numbers=withenddot, 11pt]{scrartcl}
 
 % Vorlage fuer Ausarbeitungen
-% Version 2023-05-23
+% Version 2023-06-02
 % Getestet mit TeX Live; Kodierung: UTF8
 
 % Hier Daten eintragen:
@@ -12,7 +12,7 @@
 \newcommand{\datum}{\today}
 % Ende der Daten
 
-\usepackage[inner=25mm, outer=25mm, top=25mm, bottom=25mm]{geometry}
+% \usepackage[inner=25mm, outer=25mm, top=25mm, lines=50]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -25,11 +25,13 @@
 \usepackage{scrhack}
 \usepackage{setspace}\setstretch{1.1}
 \parindent0pt\parskip6pt
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Listing}
-\renewcommand{\lstlistlistingname}{Listingverzeichnis}
-\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left}
+\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left, keepspaces=true}
 
 \title{\thema}
 \author{\name\\ \hochschule \\[5mm] Schriftliche Ausarbeitung im Modul\\ „\modulname“}
@@ -42,11 +44,12 @@
     citations,
     % hybrid % LaTeX innerhalb von Markdown erlauben
     ]{markdown}
-\usepackage{float}\floatplacement{figure}{!hb}
+\usepackage{float}\floatplacement{figure}{htbp}
 
 \begin{document}
 \maketitle
 \tableofcontents
 \markdownInput{mainmatter.md}
 \printbibliography
+\include{erklaerung}
 \end{document}

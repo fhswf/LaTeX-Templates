@@ -1,7 +1,7 @@
 \documentclass[a4paper, 11pt, toc=listof, toc=bib]{scrbook}
 
 % Vorlage fuer Abschlussarbeiten
-% Version 2023-05-23
+% Version 2023-06-02
 % Getestet mit TeX Live; Kodierung: UTF8
 
 % Hier Daten eintragen:
@@ -15,7 +15,7 @@
 \newcommand{\zweitpruefer}{Prof. Dr. ???}
 % Ende der Daten
 
-\usepackage[inner=25mm, outer=25mm, top=25mm, bottom=25mm]{geometry}
+\usepackage[inner=25mm, outer=25mm, top=25mm, lines=50]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -27,12 +27,15 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{scrhack}
-\parindent0pt\parskip6pt
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\setlength{\parindent}{1.5em}
 
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Listing}
 \renewcommand{\lstlistlistingname}{Listingverzeichnis}
-\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left}
+\lstset{basicstyle=\small\ttfamily, breaklines=true, numbers=left, keepspaces=true}
 
 % Konfiguration fuer Markdown:
 \usepackage[
@@ -42,7 +45,7 @@
     citations,
     % hybrid % LaTeX innerhalb von Markdown erlauben
     ]{markdown}
-\usepackage{float}\floatplacement{figure}{!hb}
+\usepackage{float}\floatplacement{figure}{htbp}
 
 \begin{document}
 \frontmatter
@@ -57,4 +60,5 @@
 \printbibliography
 \listoffigures
 \listoftables
+\include{erklaerung}
 \end{document}
