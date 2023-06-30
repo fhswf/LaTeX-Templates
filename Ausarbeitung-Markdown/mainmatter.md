@@ -4,7 +4,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 ![](einstein.jpg "Beschreibung der Abbildung.")
 
-Zitieren aus Scheme Reports Process [@scheme] und von Knuth [@knuth, S. 17].
+Zitieren aus Scheme Reports Process [@scheme] und von Knuth [@knuth, 17].
 
 ## Überschrift Ebene zwei
 
