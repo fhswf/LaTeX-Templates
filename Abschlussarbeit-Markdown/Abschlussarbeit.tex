@@ -1,7 +1,7 @@
 \documentclass[a4paper, 11pt, toc=listof, toc=bib]{scrbook}
 
 % Vorlage fuer Abschlussarbeiten
-% Version 2023-06-30
+% Version 2023-08-19
 % Getestet mit TeX Live; Kodierung: UTF8
 
 % Hier Daten eintragen:
@@ -9,7 +9,7 @@
 \newcommand{\abschlussarbeit}{Bachelorarbeit}
 \newcommand{\hochschule}{Fachhochschule Südwestfalen}
 \newcommand{\datum}{\today}
-\newcommand{\titeldeutsch}{Deutscher Titel\\ der Abschlussarbeit}
+\newcommand{\titeldeutsch}{Titel der Abschlussarbeit}
 \newcommand{\titelenglisch}{Englischer Titel der Abschlussarbeit}
 \newcommand{\erstpruefer}{Prof. Dr. ???}
 \newcommand{\zweitpruefer}{Prof. Dr. ???}
@@ -46,14 +46,15 @@
     % hybrid % LaTeX innerhalb von Markdown erlauben
     ]{markdown}
 \usepackage{float}\floatplacement{figure}{htbp}
+% Ende der Markdownkonfiguration
 
 \begin{document}
 \frontmatter
 \include{frontmatter}
+\ofoot*{}\ifoot*{}\cfoot*{}
 \tableofcontents
 
 \mainmatter
-\ofoot*{}
 \markdownInput{mainmatter.md}
 
 \backmatter
