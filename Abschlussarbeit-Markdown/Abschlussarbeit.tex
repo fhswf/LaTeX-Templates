@@ -45,8 +45,13 @@
     citations,
     % hybrid % LaTeX innerhalb von Markdown erlauben
     ]{markdown}
-\usepackage{float}\floatplacement{figure}{htbp}
-% Ende der Markdownkonfiguration
+\usepackage{float}\floatplacement{figure}{htbp} % Platzierung von Abbildungen und Tabellen
+% Abstand vor und nach Aufzaehlungen:
+\def\markdownRendererUlBeginTight{\vspace{6pt}\begin{compactitem}}
+\def\markdownRendererUlEndTight{\end{compactitem}\vspace{6pt}}
+\def\markdownRendererOlBeginTight{\vspace{6pt}\begin{compactitem}}
+\def\markdownRendererOlEndTight{\end{compactitem}\vspace{6pt}}
+% Ende der Markdown-Konfiguration
 
 \begin{document}
 \frontmatter

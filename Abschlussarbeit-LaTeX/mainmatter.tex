@@ -1,8 +1,7 @@
 \chapter{Überschrift Ebene eins}
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-Eine Abbildungen:
+Es folgt eine Abbildungen:
 
 \begin{figure}[htbp]
 \centering
@@ -11,15 +10,17 @@ Eine Abbildungen:
 \label{abb_einstein}
 \end{figure}
 
-Abbildung \ref{abb_einstein} kann referenziert werden. Zitat aus \cite{scheme} und \cite[17]{knuth}.
+Abbildung \ref{abb_einstein} kann referenziert werden. Zitat aus \cite{scheme} und \cite[17]{knuth}. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 
 \section{Überschrift Ebene zwei}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 \subsection{Überschrift Ebene drei}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\section{Aufzählungen, Tabellen und Programmcode}
 
 Eine Aufzählung:
 
@@ -29,7 +30,6 @@ Eine Aufzählung:
 \item consetetur sadipscing elitr
 \item sed diam nonumy
 \end{itemize}
-
 Eine nummerierte Aufzählung:
 
 \begin{enumerate}
@@ -37,7 +37,6 @@ Eine nummerierte Aufzählung:
 \item Zweiter Punkt
 \item Dritter Punkt
 \end{enumerate}
-
 Es folgt Tabelle \ref{beispieltabelle}.
 
 \begin{table}[htbp]
@@ -46,19 +45,31 @@ Es folgt Tabelle \ref{beispieltabelle}.
 \toprule
 Linksbündig & Rechtsbündig & Zentriert \\
 \midrule
-Abc &  13 & Mno \\ \addlinespace
-Def & 104 & Pqr \\ \addlinespace
-Ghi &   7 & Stu \\ \addlinespace
-Jkl &  -5 & Vwx \\
+Lorem &  13 & amet \\ \addlinespace
+ipsum & 104 & consetetur \\ \addlinespace
+dolor &   7 & sadipscing \\ \addlinespace
+sit   &  -5 & elitr \\
 \bottomrule
 \end{tabular}
 \caption{Beschreibung der Tabelle.}
 \label{beispieltabelle}
 \end{table}
 
+Programmcode im Fließtext: \lstinline{printf("Hello, world!\n");}.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 Es folgt Programmlisting \ref{beispiellisting}.
 
-\begin{lstlisting}[caption={Beschreibung des Listings.}, label=beispiellisting]
+\begin{lstlisting}[caption={Beschreibung des Listings.}, label=beispiellisting, frame=tblr]
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Hello, world!\n");
+}
+\end{lstlisting}
+Ein Listing ohne Titel, welches nicht im Listingverzeichnis aufgefühert wird:
+
+\begin{lstlisting}[numbers=none]
 #include <stdio.h>
 
 int main(void)
@@ -67,17 +78,5 @@ int main(void)
 }
 \end{lstlisting}
 
-Ein Listing ohne Titel, welches nicht im Listingverzeichnis aufgefühert wird:
-
-\begin{lstlisting}[numbers=none]
-#include <stdio.h>
-
-int main(void)
-{
-    printf("Good bye!\n");
-}
-\end{lstlisting}
-
-Programmcode im Fließtext: \lstinline{int summe(int a, int b)}
-
+Text kann \emph{kursiv} oder \textbf{fett} gesetzt werden.
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
