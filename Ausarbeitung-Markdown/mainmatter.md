@@ -18,7 +18,6 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
 ## Aufzählungen, Tabellen und Programmcode
 
 Eine Aufzählung:
-` `
 
 - Lorem ipsum
 - dolor sit amet
