@@ -16,6 +16,12 @@ Für Windows gibt es Installer:
 Nach der Installation von TeXstudio muss *Biber* als Bibliographieprogramm ausgewählt werden:  
 *Optionen* > *TeXstudio konfigurieren* > *Erzeugen* > *Standard Bibliographieprogramm: Biber*
 
+**macOS**
+
+Auf dem Mac wird TeX Live unter dem Namen *MacTeX* angeboten: [www.tug.org/mactex](https://www.tug.org/mactex/)
+
+Die Entwicklungsumgebung *TeXShop* ist bereits in MacTeX enthalten. Auf Wunsch kann TeXstudio ([www.texstudio.org](https://www.texstudio.org/)) nachinstalliert werden.
+
 **Ubuntu**
 
 Installation von TeX Live über die Paketverwaltung in der Shell:
