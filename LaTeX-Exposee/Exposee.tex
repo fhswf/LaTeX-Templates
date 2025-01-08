@@ -1,16 +1,16 @@
-%! TEX program = xelatex
-\documentclass[12pt,a4paper]{article}
-\usepackage{fontspec} % Für bessere Schriftarten
-\usepackage{polyglossia} % Für deutsche Sprache
-\setmainlanguage{ngerman}
-\setmainfont{Helvetica}
+\documentclass[a4paper, 11pt, toc=listof, toc=bib]{scrartc}
+
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+
 
 \usepackage{pgfgantt} % Für Gantt-Diagramme
 \usepackage{hyperref} % Für klickbare Links
 \usepackage{geometry} % Für kleinere Seitenränder
-
-% Seitenränder einstellen
-\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 
 \title{{{Projekttitel}}}
 \author{{{Name}} \\ {{Matrikelnummer}} \\ {{E-mail}}}
