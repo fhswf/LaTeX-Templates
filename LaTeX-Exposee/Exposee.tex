@@ -1,0 +1,69 @@
+%! TEX program = xelatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec} % Für bessere Schriftarten
+\usepackage{polyglossia} % Für deutsche Sprache
+\setmainlanguage{ngerman}
+\setmainfont{Helvetica}
+
+\usepackage{pgfgantt} % Für Gantt-Diagramme
+\usepackage{hyperref} % Für klickbare Links
+\usepackage{geometry} % Für kleinere Seitenränder
+
+% Seitenränder einstellen
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\title{{{Projekttitel}}}
+\author{{{Name}} \\ {{Matrikelnummer}} \\ {{E-mail}}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Hintergrund}
+Beschreiben Sie hier den Hintergrund des Projekts.
+
+\section{Ziele}
+Listen Sie die Ziele Ihres Projekts auf.
+
+\section{Projektbeschreibung}
+Beschreiben Sie Ihr Projekt möglichst ausführlich. Nennen Sie gerne Daten, Tools und Bibliotheken die Sie verwenden verwenden und ob Sie Frameworks wie TensorFlow \cite{tensorflow2015} oder PyTorch \cite{pytorch2019} einsetzen werden.
+
+\section{Zeitplan}
+Überlegen Sie sich einen Zeitplan für Ihr Projekt. Dieser sollte realistisch sein und genügend Zeit für alle Phasen (im Beispiel unten: Recherche, Prototyp, Feature 1, Feature 2, Dokumentation) einplanen.
+Benennen Sie die Phasen Ihres Projekts sinnvoll und geben Sie an, wie lange Sie für jede Phase benötigen.
+
+\noindent % Entfernt Einrückung
+\resizebox{\textwidth}{!}{ % Verkleinert das Diagramm
+\begin{ganttchart}[
+    hgrid,
+    vgrid,
+    x unit=0.7cm, % Verkleinert die Balkenbreite
+    y unit title=0.7cm,
+    y unit chart=0.6cm,
+    time slot format=simple
+  ]{1}{16}
+  \gantttitle{Projektzeitraum (16 Wochen)}{16} \\
+  \gantttitlelist{1,...,16}{1} \\
+  \ganttbar{Recherche}{1}{3} \\
+  \ganttbar{Prototyp}{2}{6} \\
+  \ganttbar{Feature 1}{4}{10} \\
+  \ganttbar{Feature 2}{6}{14} \\
+  \ganttbar{Dokumentation}{10}{16}
+\end{ganttchart}
+}
+
+\section{Literatur}
+\begin{thebibliography}{99}
+
+\bibitem{tensorflow2015}
+Martín Abadi et al., \emph{TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems}, 2015.  
+\url{https://www.tensorflow.org/}
+
+\bibitem{pytorch2019}
+Adam Paszke et al., \emph{PyTorch: An Imperative Style, High-Performance Deep Learning Library}, 2019.  
+\url{https://pytorch.org/}
+
+\end{thebibliography}
+
+\end{document}
