@@ -1,4 +1,12 @@
-\documentclass[a4paper, 11pt, toc=listof, toc=bib]{scrartcl}
+\documentclass[a4paper, 11pt]{scrartcl}
+
+% Hier Daten eintragen:
+\newcommand{\name}{{{Ihr Name}}}
+\newcommand{\email}{{{E-Mail}}}
+\newcommand{\matnr}{{{Matrikelnummer}}}
+\newcommand{\thema}{{{Titel des Projekts}}}
+\newcommand{\datum}{\today}
+% Ende der Daten
 
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
@@ -11,25 +19,42 @@
 \usepackage{pgfgantt} % Für Gantt-Diagramme
 \usepackage{hyperref} % Für klickbare Links
 \usepackage{geometry} % Für kleinere Seitenränder
+\usepackage{xcolor}  % Für Farben
+\definecolor{fhblue}{RGB}{0, 80, 155} % Dunkelblau definieren
+\pagestyle{empty}
 
-\title{{{Projekttitel}}}
-\author{{{Name}} \\ {{Matrikelnummer}} \\ {{E-mail}}}
-\date{\today}
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  {\Large\sffamily \textbf{\@title}}\\[.4em]
+  {\large\sffamily \@author} \hfill   {\large\sffamily \@date}
+  \noindent
+  \color{fhblue}\rule{\textwidth}{1mm}\color{black}
+  \vspace*{.2em}
+\end{flushleft}\egroup
+}
+\makeatother
+
+\title{\thema}
+\author{\name \hspace{.5em} (\matnr) \\ \href{mailto:\email}{\email}}
+\date{\datum}
+
 
 \begin{document}
 
 \maketitle
+\thispagestyle{empty}
 
-\section{Hintergrund}
+\section*{Hintergrund}
 Beschreiben Sie hier den Hintergrund des Projekts.
 
-\section{Ziele}
+\section*{Ziele}
 Listen Sie die Ziele Ihres Projekts auf.
 
-\section{Projektbeschreibung}
+\section*{Projektbeschreibung}
 Beschreiben Sie Ihr Projekt möglichst ausführlich. Nennen Sie gerne Daten, Tools und Bibliotheken die Sie verwenden verwenden und ob Sie Frameworks wie TensorFlow \cite{tensorflow2015} oder PyTorch \cite{pytorch2019} einsetzen werden.
 
-\section{Zeitplan}
+\section*{Zeitplan}
 Überlegen Sie sich einen Zeitplan für Ihr Projekt. Dieser sollte realistisch sein und genügend Zeit für alle Phasen (im Beispiel unten: Recherche, Prototyp, Feature 1, Feature 2, Dokumentation) einplanen.
 Benennen Sie die Phasen Ihres Projekts sinnvoll und geben Sie an, wie lange Sie für jede Phase benötigen.
 
@@ -53,7 +78,6 @@ Benennen Sie die Phasen Ihres Projekts sinnvoll und geben Sie an, wie lange Sie 
 \end{ganttchart}
 }
 
-\section{Literatur}
 \begin{thebibliography}{99}
 
 \bibitem{tensorflow2015}
