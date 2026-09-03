@@ -2,10 +2,19 @@
 
 % Hier Daten eintragen:
 \newcommand{\name}{{{Ihr Name}}}
-\newcommand{\email}{{{E-Mail}}}
+% nachname.vorname\@fh-swf.de als E-Mail-Adresse eintragen, z.B. mustermann.max\@fh-swf.de
+\newcommand{\email}{{{nachname.vorname@fh-swf.de}}}
 \newcommand{\matnr}{{{Matrikelnummer}}}
-\newcommand{\thema}{{{Titel des Projekts}}}
-\newcommand{\datum}{\today}
+\newcommand{\thema}{{{Titel der Projekt-, Bachelor- oder Masterarbeit}}}
+
+\newcommand{\ai}{Studiengang Angewandte Informatik B.Sc.}
+\newcommand{\vbai}{Verbundstudiengang Angewandte Informatik B.Sc.}
+\newcommand{\vmai}{Verbundstudiengang Angewandte Informatik M.Sc.}
+\newcommand{\vaki}{Verbundstudiengang Angewandte KI M.Sc.}
+
+% Wähle einen der vorstehenden Studiengänge aus und trage ihn in \studiengang ein.
+\newcommand{\studiengang}{\ai}
+\newcommand{\projektwochen}{24}
 % Ende der Daten
 
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
@@ -14,20 +23,23 @@
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage{csquotes}
-
-
-\usepackage{pgfgantt} % Für Gantt-Diagramme
+\usepackage{enumitem}
+\usepackage{pgfgantt}
 \usepackage{hyperref} % Für klickbare Links
-\usepackage{geometry} % Für kleinere Seitenränder
+\usepackage{url}
 \usepackage{xcolor}  % Für Farben
 \definecolor{fhblue}{RGB}{0, 80, 155} % Dunkelblau definieren
+\definecolor{ganttbargray}{gray}{0.82}
+\definecolor{ganttgridgray}{gray}{0.72}
 \pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=*, itemsep=.15em, topsep=.25em}
 
 \makeatletter
 \renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
 \begin{flushleft}
   {\Large\sffamily \textbf{\@title}}\\[.4em]
-  {\large\sffamily \@author} \hfill   {\large\sffamily \@date}
+  {\large\sffamily \@author}
   \noindent
   \color{fhblue}\rule{\textwidth}{1mm}\color{black}
   \vspace*{.2em}
@@ -36,57 +48,110 @@
 \makeatother
 
 \title{\thema}
-\author{\name \hspace{.5em} (\matnr) \\ \href{mailto:\email}{\email}}
-\date{\datum}
+\author{\name \hspace{.5em} (\matnr) \\ \texttt{\email} \\ \studiengang}
+\date{}
 
+% Einfache Bausteine für den Zeitplan:
+% \Arbeitspaket{Name}{Startwoche}{Endwoche}
+% \Meilenstein{Name}{Woche}
+\newcommand{\Arbeitspaket}[3]{\ganttbar{#1}{#2}{#3}\\}
+\newcommand{\Meilenstein}[2]{\ganttmilestone{#1}{#2}\\}
 
 \begin{document}
 
 \maketitle
 \thispagestyle{empty}
 
+Das Exposé soll den geplanten Arbeitsinhalt präzise zusammenfassen und zwei Seiten füllen. Es soll nicht länger als zwei Seiten sein. Schreiben Sie daher konkret, knapp und priorisieren Sie die Punkte, die für die Betreuung und die Freigabe der Arbeit wichtig sind.
+
 \section*{Hintergrund}
-Beschreiben Sie hier den Hintergrund des Projekts.
+Ordnen Sie das Thema fachlich ein: Welches Problem, welche Anwendung oder welcher Forschungsstand motiviert die Arbeit? Nennen Sie die wichtigsten Begriffe, Randbedingungen und die praktische oder wissenschaftliche Relevanz. Belegen Sie die Motivation mit einer Quelle, die den Bedarf, die technische Entwicklung oder die Forschungslücke nachvollziehbar macht.
+Idealerweise bauen Sie auf bestehender Literatur auf. Geben Sie z.B. eine aktuelle Forschungsarbeit an und erläutern Sie, wie Ihre Arbeit daran anknüpft.
 
-\section*{Ziele}
-Listen Sie die Ziele Ihres Projekts auf.
+\textbf{Beispiel:} In einer aktuellen Studie werden LLM-basierte Agenten untersucht, die in Kubernetes-Umgebungen Fehler diagnostizieren und beheben können \cite{operaid2026}. Die Ergebnisse zeigen deutliche Leistungsunterschiede zwischen Modellen und einen starken Einfluss des Tool-Zugriffs. Es sollte daher weiter untersucht werden, unter welchen Bedingungen LLM-basierte Agenten Kubernetes-Fehler zuverlässig diagnostizieren und beheben können und welchen Einfluss die Auswahl des Sprachmodells sowie die verfügbaren Werkzeuge auf den Erfolg der Fehlerbehebung haben.
 
-\section*{Projektbeschreibung}
-Beschreiben Sie Ihr Projekt möglichst ausführlich. Nennen Sie gerne Daten, Tools und Bibliotheken die Sie verwenden verwenden und ob Sie Frameworks wie TensorFlow \cite{tensorflow2015} oder PyTorch \cite{pytorch2019} einsetzen werden.
+
+\section*{Forschungsfrage und Ziele}
+Formulieren Sie eine übergeordnete Forschungsfrage, die Ihre Arbeit beantworten soll. Die Ziele konkretisieren anschließend, wie diese Frage bearbeitet wird. Eine gute Forschungsfrage macht klar, was untersucht wird, unter welchen Bedingungen die Untersuchung stattfindet und woran Erfolg gemessen wird.
+
+\textbf{Beispiel:} \enquote{In welchem Umfang können LLM-basierte Agenten definierte Administrations- und Fehlerbehebungsaufgaben in Kubernetes-Clustern autonom und korrekt durchführen, und wie unterscheiden sich verschiedene LLMs hinsichtlich Erfolgsrate, Effizienz und Sicherheit?}
+
+Aus der Forschungsfrage können im Beispiel folgende Ziele abgeleitet werden:
+
+\begin{itemize}
+  \item Reproduzierbare Kubernetes-Szenarien für Administration und Fehlerbehebung definieren.
+  \item Einen LLM-basierten Agenten mit Zugriff auf geeignete Kubernetes-Werkzeuge umsetzen.
+  \item Mehrere LLMs unter identischen Bedingungen mit denselben Szenarien evaluieren.
+  \item Die Ergebnisse hinsichtlich Erfolgsrate, Effizienz und Sicherheit vergleichen.
+  \item Optional: Den Einfluss der Aufgabenkomplexität auf die Erfolgsrate analysieren.
+  \item Optional: Ein lokales LLM mit einem Cloud-basierten LLM vergleichen.
+\end{itemize}
+
+Zur Überprüfung der Ergebnisse werden geeignete Metriken eingesetzt. Im Beispiel kann die Task Success Rate zur Bestimmung der Erfolgsrate verwendet werden, Diagnosis Accuracy zur Bewertung der Fehlerdiagnose, Time to Resolution zur Messung der Bearbeitungszeit, Number of Actions zur Bewertung der Effizienz und Unsafe Action Rate zur Bewertung sicherheitskritischer Aktionen.
+
+\section*{Vorgehen und Inhalte}
+Beschreiben Sie, was im Projekt tatsächlich getan wird. Dieser Abschnitt soll für Projekt-, Bachelor- und Masterarbeiten gleichermaßen funktionieren; passen Sie Tiefe und Anspruch an den Arbeitstyp an.
+
+\begin{itemize}
+  \item \textbf{Material und Ausgangslage:} Welche Daten, Systeme, Literatur, Anforderungen oder bestehenden Lösungen werden verwendet?
+  \item \textbf{Methodik:} Welche Methoden, Modelle, Werkzeuge, Frameworks oder Evaluationskriterien setzen Sie ein? Begründen Sie wichtige Entscheidungen kurz.
+  \item \textbf{Ergebnis:} Was liegt am Ende vor, z.\,B. Prototyp, Analyse, Modell, Softwarekomponente, Experiment, Konzept oder Dokumentation?
+  \item \textbf{Abgrenzung:} Was wird bewusst nicht bearbeitet, damit Umfang und Forschungsfrage realistisch bleiben?
+\end{itemize}
 
 \section*{Zeitplan}
-Überlegen Sie sich einen Zeitplan für Ihr Projekt. Dieser sollte realistisch sein und genügend Zeit für alle Phasen (im Beispiel unten: Recherche, Prototyp, Feature 1, Feature 2, Dokumentation) einplanen.
-Benennen Sie die Phasen Ihres Projekts sinnvoll und geben Sie an, wie lange Sie für jede Phase benötigen.
+\textbf{Allgemein:} Der Zeitplan muss zur tatsächlichen Laufzeit Ihres Studiengangs und Ihres Arbeitstyps passen. Tragen Sie oben bei \verb|\projektwochen| die passende Anzahl ein und benennen Sie die Arbeitspakete konkret.
 
-\noindent % Entfernt Einrückung
-\resizebox{\textwidth}{!}{ % Verkleinert das Diagramm
+\textbf{Beispiel:} Der Ablaufplan unten zeigt eine Evaluation von LLM-basierten Kubernetes-Agenten.
+
+\noindent
+\begin{center}
+\textbf{Projektzeitraum: \projektwochen{} Wochen}\\[-.2em]
+\small
 \begin{ganttchart}[
-    hgrid,
-    vgrid,
-    x unit=0.7cm, % Verkleinert die Balkenbreite
-    y unit title=0.7cm,
-    y unit chart=0.6cm,
-    time slot format=simple
-  ]{1}{16}
-  \gantttitle{Projektzeitraum (16 Wochen)}{16} \\
-  \gantttitlelist{1,...,16}{1} \\
-  \ganttbar{Recherche}{1}{3} \\
-  \ganttbar{Prototyp}{2}{6} \\
-  \ganttbar{Feature 1}{4}{10} \\
-  \ganttbar{Feature 2}{6}{14} \\
-  \ganttbar{Dokumentation}{10}{16}
+    hgrid style/.style={draw=black!25, dotted},
+    vgrid={*1{draw=ganttgridgray, dotted}},
+    x unit=0.42cm,
+    y unit title=0.36cm,
+    y unit chart=0.46cm,
+    time slot format=simple,
+    bar height=.38,
+    bar label font=\small,
+    milestone label font=\small\itshape,
+    title/.append style={fill=white, draw=none},
+    title label font=\scriptsize,
+    title height=1,
+    bar/.append style={fill=ganttbargray, draw=black!65},
+    milestone/.append style={fill=black!65, draw=black!65},
+    milestone height=.35
+  ]{1}{\projektwochen}
+  \gantttitlelist{1,...,\projektwochen}{1} \\
+  \Arbeitspaket{Szenarien und Metriken}{1}{5}
+  \Arbeitspaket{Kubernetes-Testumgebung}{3}{8}
+  \Meilenstein{MS1: Benchmarkdesign}{6}
+  \Arbeitspaket{Agent und Modelladapter}{7}{13}
+  \Meilenstein{MS2: Agent lauffähig}{14}
+  \Arbeitspaket{Experimente mit LLMs}{13}{18}
+  \Meilenstein{MS3: Experimente abgeschlossen}{19}
+  \Arbeitspaket{Auswertung und Dokumentation}{18}{\projektwochen}
 \end{ganttchart}
-}
+\end{center}
+
+\textbf{Meilensteine im Beispiel:} MS1: Szenarien und Metriken sind festgelegt; MS2: Agent, Testumgebung und Modellwechsel sind lauffähig; MS3: Experimente sind abgeschlossen und auswertbar.
 
 \begin{thebibliography}{99}
 
-\bibitem{tensorflow2015}
-Martín Abadi et al., \emph{TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems}, 2015.  
-\url{https://www.tensorflow.org/}
+\bibitem{operaid2026}
+A. G. de Castro, K. Vandikas, S. Ferlin, M. Chiesa, and C. E. Rothenberg, ``OperAID: Benchmarking LLM Agents for Autonomous Kubernetes Fault Remediation,'' in \emph{Proc. 12th IEEE Int. Conf. Network Softwarization (NetSoft)}, Berlin, Germany, Jun.~29--Jul.~3, 2026, pp.~625--631, doi: 10.1109/NetSoft70012.2026.11603505.
 
-\bibitem{pytorch2019}
-Adam Paszke et al., \emph{PyTorch: An Imperative Style, High-Performance Deep Learning Library}, 2019.  
-\url{https://pytorch.org/}
+\bibitem{burns2022}
+B. Burns, J. Beda, K. Hightower, and L. Evenson, \emph{Kubernetes: Up and Running: Dive into the Future of Infrastructure}, 3rd~ed. Sebastopol, CA, USA: O'Reilly Media, 2022.
+
+\bibitem{yao2023}
+S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran, K. Narasimhan, and Y. Cao, ``ReAct: Synergizing reasoning and acting in language models,'' in \emph{Proc. Int. Conf. Learn. Representations (ICLR)}, 2023. [Online]. Available: \url{https://arxiv.org/abs/2210.03629}
+
+\bibitem{schick2023}
+T. Schick, J. Dwivedi-Yu, R. Dessi, R. Raileanu, M. Lomeli, E. Hambro, L. Zettlemoyer, N. Cancedda, and T. Scialom, ``Toolformer: Language models can teach themselves to use tools,'' in \emph{Advances in Neural Information Processing Systems}, vol.~36, 2023, doi: 10.52202/075280-2997.
 
 \end{thebibliography}
 
